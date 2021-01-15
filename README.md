@@ -4,8 +4,8 @@ Nodejs script, to help cleanup a YAML dump from kubernetes to a more usable impo
 ## Use case
 Got a kubernetes cluster you need to migrate to another cluster (or backup). But do not have any of the existing yaml definition file.
 
-Bad news: I spent days, only to find out that k8 does **not** retain the original yamls you imported
-Good news: You can export the existing definitions, in full as yaml ...
+- Bad news: I spent days, only to find out that k8 does **not** retain the original yamls you imported
+- Good news: You can export the existing definitions, in full as yaml ...
 
 Well this script is just for you .... Sort of ...
 
