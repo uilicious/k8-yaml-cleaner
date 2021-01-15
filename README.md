@@ -1,7 +1,7 @@
 # k8-yaml-cleaner
 Nodejs script, to help cleanup a YAML dump from kubernetes to a more usable importable script  (into another cluster)
 
-# Use case
+## Use case
 Got a kubernetes cluster you need to migrate to another cluster (or backup). But do not have any of the existing yaml definition file.
 
 Bad news: I spent days, only to find out that k8 does **not** retain the original yamls you imported
@@ -9,7 +9,7 @@ Good news: You can export the existing definitions, in full as yaml ...
 
 Well this script is just for you .... Sort of ...
 
-# Step 1 - Export your existing yaml definition
+### Step 1 - Export your existing yaml definition
 
 ```
 kubectl get deployment,service,pod yourapp -o yaml --export
@@ -18,7 +18,7 @@ kubectl get deploy --all-namespaces -o yaml --export
 
 Problem is, this exports the existing k8 state - not the yaml you previously imported. And in addition, it has so much auxillary information unique to the current cluster, that the import command will fail on a new k8 cluster.
 
-# Step 2 - Filter the data for junk
+### Step 2 - Filter the data for junk
 
 ```
 node ./yaml-cleaner.js -file <filepath>
@@ -26,10 +26,14 @@ node ./yaml-cleaner.js -file <filepath>
 
 **Disclaimer:** This is a really hacky script, it probably will not work 100% for you, you may need to modify the script, or hand tune/scrub the data.
 
-# Step 3 - Import, Fail, Handtune
+### Step 3 - Import, Fail, Handtune
 
 See disclaimer, in step 2 - adjust your yaml, until its usuable / importable
 
-# Step 4 - BACKUP
+### Step 4 - BACKUP
 
-You do not want to repeat this whole process again.
+You do not want to repeat this whole process again. 
+
+I apologies if the script isnt good enough, please send patches, or if your hardworking enough consider adding in a real YAML parser (instead of this evil regex search and replace).
+
+Hopefully it will help the next person, who will go through this.
