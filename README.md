@@ -20,13 +20,12 @@ Problem is, this exports the existing k8 state - not the yaml you previously imp
 
 In addition, it has so much auxillary information unique to the current cluster, inflating what was previously a 50 line yaml, to a 250 line yaml - to the extent, that the import command will fail on a new k8 cluster. 
 
-### Step 2 - Filter the data for junk
-
+### Step 2 - Filter out junk data
 ```
 node ./yaml-cleaner.js -file <filepath>
 ```
 
-**Disclaimer:** This is a really hacky script, it probably will not work 100% for you, but serves as a starting point.
+**Disclaimer:** This is a really hacky script, it uses regex, it probably will not work 100% for you, but serves as a starting point, in making the YAML sane and human - While unlikely, it might even filter out critical/useful data.
 
 ### Step 3 - Import, Fail, Test, Handtune
 
